@@ -308,6 +308,47 @@
             padding: 2.5rem 2rem;
             text-align: center;
             border: 2px solid transparent;
+            z-index: 1; /* Important for stacking */
+        }
+        
+        /* New: Background Image Layer for Service Cards */
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35; /* 35% opacity (faded) */
+            z-index: -1; /* Behind the text */
+            transition: var(--transition);
+        }
+
+        /* Specific backgrounds for services */
+        .service-card.bg-it::before {
+            background-image: url('WhatsApp Image 2026-02-09 at 03.44.17.jpeg'); /* 5th for IT */
+        }
+
+        .service-card.bg-office::before {
+            background-image: url('R.jpg'); /* 6th for Office */
+        }
+
+        .service-card.bg-construction::before {
+            background-image: url('WhatsApp Image 2026-02-09 at 03.45.05.jpeg'); /* 4th for Construction */
+        }
+
+        .service-card.bg-maintenance::before {
+            background-image: url('WhatsApp Image 2026-02-09 at 03.46.18.jpeg'); /* 2nd for Supply/Maintenance */
+        }
+
+        .service-card.bg-electrical::before {
+            background-image: url('WhatsApp Image 2026-02-09 at 03.46.55.jpeg'); /* 1st for Electric */
+        }
+
+        .service-card.bg-handyman::before {
+            background-image: url('WhatsApp Image 2026-02-09 at 03.46.12.jpeg'); /* 3rd for Handyman */
         }
 
         .service-card:hover {
@@ -315,28 +356,41 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             border-color: var(--blue-light);
         }
+        
+        /* Brighten background slightly on hover */
+        .service-card:hover::before {
+            opacity: 0.5;
+        }
 
         .service-icon {
             font-size: 3.5rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             display: inline-block;
+            background: rgba(255,255,255,0.7); /* Added background to icon for better visibility */
+            padding: 10px;
+            border-radius: 50%;
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8); /* Text shadow for readability */
         }
 
         .service-card ul {
             text-align: left;
             padding-left: 1.5rem;
             margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.6); /* Semi-transparent background for text list */
+            padding: 15px 15px 15px 35px;
+            border-radius: 8px;
         }
 
         .service-card li {
             margin-bottom: 0.5rem;
             position: relative;
+            font-weight: 500;
         }
 
         /* Floating Images Above Services */
@@ -908,7 +962,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="#home" class="logo">
@@ -931,7 +984,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <h1>Construction, Supply & Maintenance Solutions</h1>
@@ -943,7 +995,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
@@ -993,14 +1044,12 @@
         </div>
     </section>
 
-    <!-- Floating Images Above Services -->
     <div class="floating-images">
         <img src="WhatsApp Image 2025-12-09 at 08.04.49.jpeg" alt="Construction Site" class="floating-img floating-img-1">
         <img src="WhatsApp Image 2025-12-09 at 08.03.48 (1).jpeg" alt="Planning Team" class="floating-img floating-img-2">
         <img src="WhatsApp Image 2025-12-09 at 08.03.48.jpeg" alt="Painters Exterior" class="floating-img floating-img-3">
     </div>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
@@ -1008,8 +1057,7 @@
             </div>
             
             <div class="services-grid">
-                <!-- IT Supply Solutions -->
-                <div class="service-card">
+                <div class="service-card bg-it">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
@@ -1022,8 +1070,7 @@
                     </ul>
                 </div>
                 
-                <!-- Office Furniture & Supply -->
-                <div class="service-card">
+                <div class="service-card bg-office">
                     <div class="service-icon">
                         <i class="fas fa-couch"></i>
                     </div>
@@ -1036,8 +1083,7 @@
                     </ul>
                 </div>
                 
-                <!-- Construction Management -->
-                <div class="service-card">
+                <div class="service-card bg-construction">
                     <div class="service-icon">
                         <i class="fas fa-hard-hat"></i>
                     </div>
@@ -1050,8 +1096,7 @@
                     </ul>
                 </div>
                 
-                <!-- Maintenance Services -->
-                <div class="service-card">
+                <div class="service-card bg-maintenance">
                     <div class="service-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -1064,8 +1109,7 @@
                     </ul>
                 </div>
                 
-                <!-- Electrical Services -->
-                <div class="service-card">
+                <div class="service-card bg-electrical">
                     <div class="service-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
@@ -1078,8 +1122,7 @@
                     </ul>
                 </div>
                 
-                <!-- Handyman Services -->
-                <div class="service-card">
+                <div class="service-card bg-handyman">
                     <div class="service-icon">
                         <i class="fas fa-hammer"></i>
                     </div>
@@ -1095,7 +1138,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <div class="container">
             <div class="section-title">
@@ -1177,19 +1219,17 @@
         </div>
     </section>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-close" id="lightboxClose">×</button>
         <div class="lightbox-nav">
-            <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
-            <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+            <button class="lightbox-prev" id="lightboxPrev">❮</button>
+            <button class="lightbox-next" id="lightboxNext">❯</button>
         </div>
         <div class="lightbox-content">
             <img src="" alt="" class="lightbox-img" id="lightboxImg">
         </div>
     </div>
 
-    <!-- Partners/Sponsors Section -->
     <section class="partners" id="partners">
         <div class="container">
             <div class="section-title">
@@ -1207,11 +1247,19 @@
                 <img src="WhatsApp Image 2025-12-08 at 23.46.20.png" alt="Adivhaho Logistics" class="partner-logo">
                 <img src="WhatsApp Image 2025-12-08 at 23.46.20 (2).png" alt="Afrihost" class="partner-logo">
                 <img src="WhatsApp Image 2025-12-08 at 23.46.21 (2).png" alt="Khazwi Security Services" class="partner-logo">
+
+                <img src="WhatsApp Image 2026-02-09 at 03.38.25.png" alt="Tshwane University of Technology" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.37.09.png" alt="Department of Public Works" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.37.09 (1).png" alt="Rural Development & Land Reform" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.37.09 (2).png" alt="Siegwerk" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.36.34 (2).jpeg" alt="Mall of Thembisa" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.36.34 (1).jpeg" alt="Super Spar" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.36.34.jpeg" alt="Engen" class="partner-logo">
+                <img src="WhatsApp Image 2026-02-09 at 03.38.05.jpeg" alt="University of Johannesburg" class="partner-logo">
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1283,7 +1331,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1323,17 +1370,15 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 Avery's Maintenance (Pty) Ltd. All Rights Reserved. | Registration No: 2023/955742/07</p>
+                <p>© 2025 Avery's Maintenance (Pty) Ltd. All Rights Reserved. | Registration No: 2023/955742/07</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Icon -->
     <a href="https://wa.me/message/DVSCJ5Z5PBZUL1" target="_blank" class="floating-icon floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <!-- Floating Facebook Icon -->
     <a href="https://www.facebook.com/profile.php?id=100064155606689&mibextid=2JQ9oc" target="_blank" class="floating-icon floating-facebook">
         <i class="fab fa-facebook-f"></i>
     </a>
